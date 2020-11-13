@@ -1,90 +1,254 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/customColors.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/index.css"  media="screen,projection"/>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Formulario</title>
+    <meta charset="utf-8">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/customColors.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/index.css" media="screen,projection" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
 </head>
 
 <body>
-  <video src="img/video.mp4" id="vidFondo"></video>
+    <video src="img/video.mp4" id="vidFondo"></video>
 
-  <div class="contenedor">
-    <div class="card rowTitulo">
-      <h1>Bienes Intelcost</h1>
-    </div>
-    <div class="colFiltros">
-      <form action="#" method="post" id="formulario">
-        <div class="filtrosContenido">
-          <div class="tituloFiltros">
-            <h5>Filtros</h5>
-          </div>
-          <div class="filtroCiudad input-field">
-            <p><label for="selectCiudad">Ciudad:</label><br></p>
-            <select name="ciudad" id="selectCiudad">
-              <option value="" selected>Elige una ciudad</option>
-            </select>
-          </div>
-          <div class="filtroTipo input-field">
-            <p><label for="selecTipo">Tipo:</label></p>
-            <br>
-            <select name="tipo" id="selectTipo">
-              <option value="">Elige un tipo</option>
-            </select>
-          </div>
-          <div class="filtroPrecio">
-            <label for="rangoPrecio">Precio:</label>
-            <input type="text" id="rangoPrecio" name="precio" value="" />
-          </div>
-          <div class="botonField">
-            <input type="submit" class="btn white" value="Buscar" id="submitButton">
-          </div>
+    <div class="contenedor">
+        <div class="card rowTitulo">
+            <h1>Bienes Intelcost</h1>
         </div>
-      </form>
-    </div>
-    <div id="tabs" style="width: 75%;">
-      <ul>
-        <li><a href="#tabs-1">Bienes disponibles</a></li>
-        <li><a href="#tabs-2">Mis bienes</a></li>
-      </ul>
-      <div id="tabs-1">
-        <div class="colContenido" id="divResultadosBusqueda">
-          <div class="tituloContenido card" style="justify-content: center;">
-            <h5>Resultados de la búsqueda:</h5>
-            <div class="divider"></div>
-          </div>
+        <div class="colFiltros">
+            <form action="#" method="post" id="formulario">
+                <div class="filtrosContenido">
+                    <div class="tituloFiltros">
+                        <h5>Filtros</h5>
+                    </div>
+
+                    <div class="filtroCiudad input-field">
+                        <p><label for="selectCiudad">Ciudad:</label><br></p>
+                        <select name="ciudad" id="selectCiudad">
+                <option value="" selected>Elige una ciudad</option>
+              </select>
+                    </div>
+
+                    <div class="filtroTipo input-field">
+                        <p><label for="selecTipo">Tipo:</label></p>
+                        <br>
+                        <select name="tipo" id="selectTipo">
+                <option value="">Elige un tipo</option>
+              </select>
+                    </div>
+
+                    <div class="filtroPrecio">
+                        <label for="rangoPrecio">Precio:</label>
+                        <input type="text" id="rangoPrecio" name="precio" value="" />
+                    </div>
+
+                    <div class="botonField">
+                        <input type="submit" class="btn white" value="Buscar" id="submitButton">
+                    </div>
+
+                </div>
+            </form>
         </div>
-      </div>
-      
-      <div id="tabs-2" >
-        <div class="colContenido" id="divResultadosBusqueda">
-          <div class="tituloContenido card" style="justify-content: center;">
-            <h5>Bienes guardados:</h5>
-            <div class="divider"></div>
-          </div>
+
+        <div id="tabs" style="width: 75%;">
+            <ul>
+                <li><a href="#tabs-1">Bienes disponibles</a></li>
+                <li><a href="#tabs-2">Mis bienes</a></li>
+            </ul>
+
+            <div id="tabs-1">
+                <div class="colContenido" id="divResultadosBusqueda">
+                    <div class="tituloContenido card" style="justify-content: center;">
+                        <h5>Resultados de la búsqueda:
+                            <span id="canti"></span>
+                        </h5>
+                        <div class="divider"></div>
+
+                        <div id="resultado">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tabs-2">
+                <div class="colContenido" id="divResultadosBusqueda">
+                    <div class="tituloContenido card" style="justify-content: center;">
+
+                        <h5>Bienes guardados: <span id="cant"></span> </h5>
+                        <div class="divider"></div>
+                        <div id="bienes">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    
-    <script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/buscador.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript">
-      $( document ).ready(function() {
-          $( "#tabs" ).tabs();
-      });
-    </script>
-  </body>
-  </html>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+        <script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/buscador.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="data-1.json"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#tabs").tabs();
+                cargarCiudad();
+                cargarTipo();
+
+
+                function cargarCiudad() {
+                    $.getJSON("data-1.json", function(data) {
+                        var ciudad = data.filter(function(e) {
+                            return data[e.Ciudad] ? false : (data[e.Ciudad] = true);
+                        });
+
+                        $.each(ciudad, function(i, dato) {
+                            $("#selectCiudad").append('<option value=' + dato.Ciudad + '>' + dato.Ciudad + '</option>');
+                        });
+                    });
+                }
+
+                function cargarTipo() {
+                    $.getJSON("data-1.json", function(data) {
+                        var tipo = data.filter(function(e) {
+                            return data[e.Tipo] ? false : (data[e.Tipo] = true);
+                        });
+                        $.each(tipo, function(i, dato) {
+                            $("#selectTipo").append('<option value=' + dato.Tipo + '>' + dato.Tipo + '</option>');
+                        });
+
+                    });
+                }
+
+                $('#ui-id-2').click(function(e) {
+                    e.preventDefault();
+                    $('#bienes').empty();
+                    $('#cant').empty();
+                    axios.get('./server/listar.php')
+                        .then(function(response) {
+                            if (response.status == 200) {
+                                let cont = 0;
+                                $.each(response.data, function(i, dato) {
+                                    cont++;
+                                    $('#bienes').append(
+                                        `
+                                        <div class="col s12 m8 offset-m2 l6 offset-l3">
+                                          <div class="card-panel grey lighten-5 z-depth-1">
+                                              <div class="row valign-wrapper">
+                                                  <div class="col s6">
+                                                      <img src="./img/home.jpg" alt="" class="responsive-img">
+                                                  </div>
+                                                  <div class="col s10">
+                                                      <span class="black-text">
+                                                          Direccion : ${dato.direccion} </br>
+                                                          Ciudad : ${dato.ciudad}</br>
+                                                          Telefono : ${dato.telefono}</br>
+                                                          Codigo Postal : ${dato.codigo_postal}</br>
+                                                          Tipo : ${dato.tipo}</br>
+                                                          Precio : ${dato.precio}</br>
+                                                      </span>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      `
+                                    )
+                                })
+                                $('#cant').append(cont)
+                            }
+                        })
+                        .catch(function(error) {
+                            console.log(error);
+                        })
+                })
+
+                $('#submitButton').click(function(event) {
+                    event.preventDefault();
+                    let ciudad = $('select[name="ciudad"] option:selected').text();
+                    let tipo = $('select[name="tipo"] option:selected').text();
+                    $('#resultado').empty();
+                    $('#canti').empty();
+                    if (ciudad != 'Elige una ciudad' && tipo != 'Elige un tipo') {
+                        $.getJSON("data-1.json", function(data) {
+                            let cont = 0;
+                            $.each(data, function(i, dato) {
+                                if (dato.Ciudad == ciudad && dato.Tipo == tipo) {
+                                    cont++
+                                    $('#resultado').append(
+                                        `
+                                        <div class="col s12 m8 offset-m2 l6 offset-l3">
+                                          <div class="card-panel grey lighten-5 z-depth-1">
+                                              <div class="row valign-wrapper">
+                                                  <div class="col s6">
+                                                      <img src="./img/home.jpg" alt="" class="responsive-img">
+                                                  </div>
+                                                  <div class="col s10">
+                                                      <span class="black-text">
+                                                          Direccion : ${dato.Direccion} </br>
+                                                          Ciudad : ${dato.Ciudad}</br>
+                                                          Telefono : ${dato.Telefono}</br>
+                                                          Codigo Postal : ${dato.Codigo_Postal}</br>
+                                                          Tipo : ${dato.Tipo}</br>
+                                                          Precio : ${dato.Precio}</br>
+                                                      </span>
+                                                      <input type="submit" class="btn" value="Guardar" id=${i+1}>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      `
+                                    )
+                                }
+                            });
+                            $('#canti').append(cont)
+                        });
+                    } else {
+                        alert("selecciones todos los campos")
+                    }
+                })
+
+                $('#resultado').on('click', 'input', function(e) {
+                    let id = e.target.id;
+                    $.getJSON("data-1.json", function(data) {
+                        $.each(data, function(i, dato) {
+                            if (dato.Id == id) {
+                                axios.post('./server/guardar.php', {
+                                            dato
+                                        }
+
+                                    )
+                                    .then(function(res) {
+                                        if (res.data == "insertado" && res.status == 200) {
+                                            alert("Dato Guardado")
+                                        }
+                                    })
+                                    .catch(function(err) {
+                                        console.log(err);
+                                    })
+                            }
+                        });
+                    });
+
+                });
+
+            });
+        </script>
+</body>
+
+</html>
